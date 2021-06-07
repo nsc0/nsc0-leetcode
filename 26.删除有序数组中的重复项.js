@@ -10,7 +10,7 @@
  * @return {number}
  */
 var removeDuplicates = function (nums) {
-  // 1. 哈希表
+  // 1. 哈希表 (无序也ok)
   //   const hash = {}
   //   for (let i = 0; i < nums.length; i++) {
   //     if (hash[nums[i]] === undefined) {
@@ -40,6 +40,6 @@ var removeDuplicates = function (nums) {
   return nums.length
 }
 // @lc code=end
-const arr = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
+const arr = [0, 5, 1, 1, 1, 2, 2, 3, 3, 4]
 removeDuplicates(arr)
 console.log(arr)
