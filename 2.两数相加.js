@@ -3,6 +3,12 @@
  *
  * [2] 两数相加
  */
+class ListNode {
+	constructor(val, next) {
+		this.val = val === undefined ? 0 : val
+		this.next = next === undefined ? null : next
+	}
+}
 
 // @lc code=start
 /**
@@ -17,8 +23,9 @@
  * @param {ListNode} l2
  * @return {ListNode}
  */
-var addTwoNumbers = function(l1, l2) {
-
-};
+var addTwoNumbers = function (l1, l2) {
+	let node = new ListNode(8, 0)
+	return node
+}
 // @lc code=end
 

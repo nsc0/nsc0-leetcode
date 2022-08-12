@@ -10,34 +10,34 @@
  * @return {number}
  */
 var removeDuplicates = function (nums) {
-  // 1. 哈希表 (无序也ok)
-  //   const hash = {}
-  //   for (let i = 0; i < nums.length; i++) {
-  //     if (hash[nums[i]] === undefined) {
-  //       hash[nums[i]] = i
-  //     } else {
-  //       nums.splice(i, 1)
-  //       i--
-  //     }
-  //   }
-  //   return nums.length
+	// 1. 哈希表 (无序也ok)
+	//   const hash = {}
+	//   for (let i = 0; i < nums.length; i++) {
+	//     if (hash[nums[i]] === undefined) {
+	//       hash[nums[i]] = i
+	//     } else {
+	//       nums.splice(i, 1)
+	//       i--
+	//     }
+	//   }
+	//   return nums.length
 
-  // 2. 双指针
+	// 2. 双指针
 
-  if (!nums.length || nums.length === 1) {
-    return nums.length
-  }
-  let i = nums.length - 1
-  for (let j = nums.length - 1; j >= 0; j--) {
-    if (i === j && nums[i] === nums[j]) {
-      continue
-    }
-    if (i > j && nums[i] === nums[j]) {
-      nums.splice(j, 1)
-    }
-    i = j
-  }
-  return nums.length
+	if (!nums.length || nums.length === 1) {
+		return nums.length
+	}
+	let i = nums.length - 1
+	for (let j = nums.length - 1; j >= 0; j--) {
+		if (i === j && nums[i] === nums[j]) {
+			continue
+		}
+		if (i > j && nums[i] === nums[j]) {
+			nums.splice(j, 1)
+		}
+		i = j
+	}
+	return nums.length
 }
 // @lc code=end
 const arr = [0, 5, 1, 1, 1, 2, 2, 3, 3, 4]

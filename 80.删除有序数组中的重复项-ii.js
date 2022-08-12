@@ -10,15 +10,15 @@
  * @return {number}
  */
 var removeDuplicates = function (nums) {
-  const hash = {}
-  for (let i = 0; i < nums.length; i++) {
-    if (hash[nums[i]] === 2) {
-      nums.splice(i, 1)
-      i--
-    } else {
-      hash[nums[i]] === 1 ? hash[nums[i]]++ : (hash[nums[i]] = 1)
-    }
-  }
+	const hash = {}
+	for (let i = 0; i < nums.length; i++) {
+		if (hash[nums[i]] === 2) {
+			nums.splice(i, 1)
+			i--
+		} else {
+			hash[nums[i]] === 1 ? hash[nums[i]]++ : (hash[nums[i]] = 1)
+		}
+	}
 }
 // @lc code=end
 

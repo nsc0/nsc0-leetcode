@@ -10,15 +10,12 @@
  * @return {number}
  */
 var singleNumber = function (nums) {
-  let num = 0
-  for (let i = 0; i < nums.length; i++) {
-    let lastIndex = nums.lastIndexOf(nums[i])
-    let n = nums[i]
-    nums.splice(lastIndex, 1)
-    if (nums.indexOf(n) == -1) {
-      num = n
-    }
-  }
-  return num
+	// hashset equal
+	const o = {}
+	for (let i = 0; i < nums.length; i++) {
+		if (!o[nums[i]]) o[nums[i]] = 1
+		else delete o[nums[i]]
+	}
+	return Object.keys(o)[0]
 }
 // @lc code=end

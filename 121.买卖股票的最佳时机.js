@@ -10,56 +10,56 @@
  * @return {number}
  */
 var maxProfit = function (prices) {
-  /**暴力法，遍历每一个找到之后所有的数的差价（指利润），在所有利润中找到最大的一个 */
-  // if (prices.length <= 1) {
-  //   return 0
-  // }
-  // let resultArr = []
-  // for (let i = 0; i < prices.length; i++) {
-  //   resultArr.push(prices[i] - Math.min(...prices.slice(0, i + 1)))
-  // }
-  // const endTime = Date.now().valueOf()
-  // console.log(endTime - startTime + 'ms')
-  // return Math.max(...resultArr)
+	/**暴力法，遍历每一个找到之后所有的数的差价（指利润），在所有利润中找到最大的一个 */
+	// if (prices.length <= 1) {
+	//   return 0
+	// }
+	// let resultArr = []
+	// for (let i = 0; i < prices.length; i++) {
+	//   resultArr.push(prices[i] - Math.min(...prices.slice(0, i + 1)))
+	// }
+	// const endTime = Date.now().valueOf()
+	// console.log(endTime - startTime + 'ms')
+	// return Math.max(...resultArr)
 
-  /**暴力略优化了亿点 */
-  // if (prices.length <= 1) return 0
-  // let maxResult = 0,
-  //   maxHashKey = 0,
-  //   maxHashValue = 0
-  // /**储存最大值的值和索引 */
-  // for (let i = 0; i < prices.length; i++) {
-  //   /**如果是第一次或当前索引比最大值的索引大，则重新计算剩余数组中的最大值 */
-  //   if (i > maxHashKey || maxHashKey === 0) {
-  //     const restMax = Math.max(...prices.slice(i + 1, prices.length))
-  //     const restMaxIndex = prices.lastIndexOf(restMax)
-  //     maxHashKey = restMaxIndex
-  //     maxHashValue = restMaxIndex === -1 ? 0 : restMax
-  //   }
-  //   const result = maxHashValue - prices[i]
-  //   if (result > maxResult) maxResult = result
-  // }
-  // return maxResult
+	/**暴力略优化了亿点 */
+	// if (prices.length <= 1) return 0
+	// let maxResult = 0,
+	//   maxHashKey = 0,
+	//   maxHashValue = 0
+	// /**储存最大值的值和索引 */
+	// for (let i = 0; i < prices.length; i++) {
+	//   /**如果是第一次或当前索引比最大值的索引大，则重新计算剩余数组中的最大值 */
+	//   if (i > maxHashKey || maxHashKey === 0) {
+	//     const restMax = Math.max(...prices.slice(i + 1, prices.length))
+	//     const restMaxIndex = prices.lastIndexOf(restMax)
+	//     maxHashKey = restMaxIndex
+	//     maxHashValue = restMaxIndex === -1 ? 0 : restMax
+	//   }
+	//   const result = maxHashValue - prices[i]
+	//   if (result > maxResult) maxResult = result
+	// }
+	// return maxResult
 
-  /**双指针 */
-  let i = 0,
-    j = 1,
-    max = 0
-  let len = prices.length
+	/**双指针 */
+	let i = 0,
+		j = 1,
+		max = 0
+	let len = prices.length
 
-  while (j < len) {
-    if (prices[i] > prices[j]) {
-      i = j
-      j = i + 1
-    } else {
-      const profit = prices[j] - prices[i]
-      // max = profit > max ? profit : max
-      max < profit && (max = profit)
-      j++
-    }
-  }
+	while (j < len) {
+		if (prices[i] > prices[j]) {
+			i = j
+			j = i + 1
+		} else {
+			const profit = prices[j] - prices[i]
+			// max = profit > max ? profit : max
+			max < profit && (max = profit)
+			j++
+		}
+	}
 
-  return max
+	return max
 }
 // @lc code=end
 
