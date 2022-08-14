@@ -11,6 +11,7 @@
  * @return {number[]}
  */
 var twoSum = function (nums, target) {
+	// 暴力解法
 	if (nums.length <= 1) {
 		return []
 	} else {
@@ -25,5 +26,6 @@ var twoSum = function (nums, target) {
 		}
 		return result
 	}
+	// 
 }
 // @lc code=end
