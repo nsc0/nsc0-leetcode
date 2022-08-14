@@ -11,11 +11,20 @@
  */
 var singleNumber = function (nums) {
 	// hashset equal
-	const o = {}
-	for (let i = 0; i < nums.length; i++) {
-		if (!o[nums[i]]) o[nums[i]] = 1
-		else delete o[nums[i]]
+	// const o = {}
+	// for (let i = 0; i < nums.length; i++) {
+	// 	if (!o[nums[i]]) o[nums[i]] = 1
+	// 	else delete o[nums[i]]
+	// }
+	// return Object.keys(o)[0]
+
+	// bit opt
+	let ans = 0;
+	for (const num of nums) {
+		ans ^= num;
 	}
-	return Object.keys(o)[0]
+	return ans;
 }
 // @lc code=end
+
+console.log(singleNumber([2, 2, 4, 6, 4]))
