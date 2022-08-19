@@ -24,8 +24,32 @@ class ListNode {
  * @return {ListNode}
  */
 var addTwoNumbers = function (l1, l2) {
-	let node = new ListNode(8, 0)
-	return node
+	let dummy = new ListNode(-1)
+	let p1 = l1
+	let p2 = l2
+	let p = dummy
+	let carry = 0
+	while (p1 !== null || p2 !== null || carry > 0) {
+		let val = carry
+		if (p1 !== null) {
+			val += p1.val
+			p1 = p1.next
+		}
+		if (p2 !== null) {
+			val += p2.val
+			p2 = p2.next
+		}
+		carry = val / 10 >> 0
+		val = val % 10
+		p.next = new ListNode(val)
+		p = p.next
+	}
+	return dummy.next
 }
 // @lc code=end
 
+const list1 = new ListNode(6, new ListNode(0, new ListNode(3)))
+const list2 = new ListNode(1, new ListNode(9, new ListNode(1)))
+// const list1 = new ListNode(9, new ListNode(9, new ListNode(9)))
+// const list2 = new ListNode(9, new ListNode(9, new ListNode(9)))
+console.log(JSON.stringify(addTwoNumbers(list1, list2)))
