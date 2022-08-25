@@ -11,6 +11,7 @@
  * @return {number[]}
  */
 var intersection = function (nums1, nums2) {
+    // 双指针，需要提前排序，复杂度太高
     nums1 = nums1.sort((x, y) => x - y)
     nums2 = nums2.sort((x, y) => x - y)
     let p1 = 0
