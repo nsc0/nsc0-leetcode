@@ -10,48 +10,22 @@
  * @return {string}
  */
 var longestCommonPrefix = function (strs) {
-	if (strs.length == 0) return ''
-	if (strs.length == 1) {
-		return strs[0]
-	}
-
-	function isAllSame(array) {
-		if (array.length > 0) {
-			return !array.some(function (value, index) {
-				return value !== array[0]
-			})
-		} else {
-			return true
-		}
-	}
-
-	if (isAllSame(strs)) return strs[0]
-
-	let count = 0
+	let prefix = ''
 	let flag = true
-	let firstElement = strs[0].charAt(count)
-	let returnStr = ''
 	while (flag) {
-		for (let i = 0; i < strs.length; i++) {
-			if (strs[i].charAt(count) !== firstElement) {
-				flag = false
-				break
-			} else {
-				if (i == strs.length - 1) {
-					count++
-					firstElement = strs[0].charAt(count)
-					returnStr = returnStr + firstElement
-				}
-			}
+		let prefixList = []
+		for (let index in strs) {
+			const str = strs[index]
+			const prefixSlice = str.slice(0, 1)
+			strs[index] = str.slice(1, 200)
+			if (!prefixSlice) return prefix
+			prefixList.push(str.slice(0, 1))
 		}
-		if (!flag) break
+		if (!prefixList.every(i => i === prefixList[0])) flag = false
+		else prefix += prefixList[0]
 	}
-
-	return returnStr === ''
-		? ''
-		: (strs[0].charAt(0) + returnStr).substring(
-			0,
-			strs[0].charAt(0).length + returnStr.length - 1
-		)
+	return prefix
 }
 // @lc code=end
+
+console.log(longestCommonPrefix2(["fl8ower", "fl8ow", "fl8ight"]))
